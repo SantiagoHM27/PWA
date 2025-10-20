@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso al Sistema</title>
+    <style>
+        /* Variables de color para fácil edición */
+        :root {
+            --bg-dark: #2c3e50; /* Fondo principal oscuro */
+            --box-bg: #34495e; /* Fondo de la caja de login (más claro que el fondo) */
+            --accent-color: #2ecc71; /* Verde esmeralda para el botón */
+            --accent-hover: #27ae60; /* Verde más oscuro para hover */
+            --text-light: #ecf0f1; /* Texto claro */
+            --input-border: #44607a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark); /* Nuevo fondo oscuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-box {
+            background-color: var(--box-bg); /* Caja de login más oscura */
+            padding: 40px; /* Un poco más de padding */
+            border-radius: 8px; /* Bordes un poco más suaves */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5); /* Sombra más pronunciada */
+            width: 320px;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--text-light); /* Título en color claro */
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid var(--input-border);
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #4a637a; /* Fondo de input ligeramente oscuro */
+            color: var(--text-light); /* Texto de input claro */
+        }
+        
+        /* Cambiar el color del placeholder (texto de ejemplo) */
+        input::placeholder {
+            color: #bdc3c7; 
+            opacity: 0.8;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: var(--accent-color); /* Botón verde esmeralda */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* Transición suave */
+        }
+
+        button:hover {
+            background-color: var(--accent-hover); /* Tono de verde al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>ACCESO</h2>
+        <form>
+            <input type="text" placeholder="Usuario" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit">ENTRAR</button>
+        </form>
+    </div>
+</body>
+</html>
