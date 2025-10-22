@@ -1,16 +1,23 @@
 // Plantilla de Service Worker
 
 // 1. Nombre y archivos a cachear
-// ¡IMPORTANTE! Cambia la versión (v2, v3, etc.) si modificas el SW o los archivos cacheables.
-const CACHE_NAME = "mi-pwa-cache-v3"; 
-const BASE_PATH = "/ejemplo/"; // Asegúrate de que esta ruta sea correcta para tu servidor
-const OFFLINE_FALLBACK_URL = `${BASE_PATH}offline.html`; // Definición clara de la URL de fallback
+// ¡IMPORTANTE! Hemos incrementado la versión a v4 para forzar la actualización.
+const CACHE_NAME = "mi-pwa-cache-v4"; 
 
+// CORRECCIÓN CLAVE: La ruta base debe ser el nombre del repositorio en GitHub Pages.
+const BASE_PATH = "/PWA/"; 
+const OFFLINE_FALLBACK_URL = `${BASE_PATH}offline.html`; 
+
+// La lista de URLs debe usar la nueva ruta base
 const urlsToCache = [
-    `${BASE_PATH}`,
+    // La raíz de la PWA (https://usuario.github.io/PWA/)
+    `${BASE_PATH}`, 
+    // Archivos principales
     `${BASE_PATH}index.html`,
+    `${BASE_PATH}login.html`, // Añadido login.html para que no salga 404 offline
     `${BASE_PATH}manifest.json`,
-    OFFLINE_FALLBACK_URL, // Incluir explícitamente la página offline
+    OFFLINE_FALLBACK_URL, 
+    // Iconos
     `${BASE_PATH}icons/icon-192x192.png`,
     `${BASE_PATH}icons/icon-512x512.png`,
     // Agrega aquí cualquier otro archivo JS o CSS estático
@@ -70,7 +77,7 @@ self.addEventListener("fetch", event => {
     }
 });
 
-// 5. PUSH -> Notificaciones en segundo plano (Opcional)
+// 5. PUSH y 6. SYNC (Se dejaron igual, puedes eliminarlas si no las usas)
 self.addEventListener("push", event => {
     const data = event.data ? event.data.text() : "Notificación sin datos";
     event.waitUntil(
@@ -78,12 +85,9 @@ self.addEventListener("push", event => {
     );
 });
 
-// 6. SYNC -> Sincronización en segundo plano (Opcional) 
-// Manejo de eventos de API que el navegador soporta
 self.addEventListener("sync", event => {
     if (event.tag === 'mi-sincronizacion') {
-        event.waitUntil(sincronizarDatos()); // Función que tendrías que definir
+        // Debes definir la función 'sincronizarDatos' si usas esto
+        // event.waitUntil(sincronizarDatos()); 
     }
 });
-
-// Puedes eliminar las secciones 5 y 6 si no las estás usando.
