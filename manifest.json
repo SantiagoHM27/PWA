@@ -3,7 +3,7 @@
     "short_name": "MiPWA",
 
     
-    "start_url": "/PWA/index.html", 
+    "start_url": "/PWA/ejemplo/index.html", 
     
    
     "scope": "/PWA/",
